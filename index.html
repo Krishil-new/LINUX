@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebOS 32</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Desktop Workspace -->
+    <div class="desktop" id="desktop">
+        
+        <!-- Desktop Shortcuts -->
+        <div class="icon" onclick="openWindow('terminal-window')">
+            <span class="icon-img">📟</span>
+            <span class="icon-text">Linux Terminal</span>
+        </div>
+
+        <div class="icon" onclick="openWindow('readme-window')">
+            <span class="icon-img">📁</span>
+            <span class="icon-text">Readme.txt</span>
+        </div>
+
+        <!-- Draggable Window 1: Readme -->
+        <div id="readme-window" class="window" style="top: 100px; left: 150px;">
+            <div class="window-header" onmousedown="dragElement(this.parentElement, event)">
+                <span class="window-title">Readme.txt</span>
+                <button class="close-btn" onclick="closeWindow('readme-window')">X</button>
+            </div>
+            <div class="window-content">
+                <h3>Welcome to your WebOS!</h3>
+                <p>This is an interactive UI layer. Double-click or tap icons to launch desktop applications.</p>
+            </div>
+        </div>
+
+        <!-- Draggable Window 2: Linux Terminal (Placeholder for v86) -->
+        <div id="terminal-window" class="window" style="top: 150px; left: 400px; display: none;">
+            <div class="window-header" onmousedown="dragElement(this.parentElement, event)">
+                <span class="window-title">Linux Kernel (v86)</span>
+                <button class="close-btn" onclick="closeWindow('terminal-window')">X</button>
+            </div>
+            <div class="window-content terminal-bg">
+                <!-- This canvas/div is where the Wasm Linux kernel will eventually render -->
+                <div id="screen_container">
+                    <div style="white-space: pre; font-family: monospace;">Booting virtual environment... [Ready for Wasm Integration]</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <button class="start-btn">Start</button>
+        <div class="time" id="clock">00:00 PM</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
